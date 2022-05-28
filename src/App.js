@@ -26,7 +26,6 @@ const App = () => {
     let collatzConjectureData = [];
 
     function getCollatzConjecture(num) {
-      let len = collatzConjectureData.length;
       collatzConjectureData = collatzConjectureData.concat(num);
 
       if (num === 0) return 0;
@@ -39,9 +38,9 @@ const App = () => {
       console.log(number);
       let num = number;
 
-      //check if input is an integer
+      //check if input is a positive integer
       let x = parseFloat(num);
-      if (!isNaN(num) && (x | 0) === x) {
+      if (!isNaN(num) && (x | 0) === x && num >= 0) {
         num = parseInt(num);
         collatzConjectureData = [];
         getCollatzConjecture(num);
