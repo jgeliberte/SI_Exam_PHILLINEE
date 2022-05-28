@@ -22,9 +22,10 @@ const App = () => {
 
   useEffect(() => {
     // Start coding here
+
+    //fresh array every update from input
     let collatzConjectureData = [];
 
-    console.log(number);
     let num = number;
 
     //check if input is a positive integer
@@ -35,9 +36,9 @@ const App = () => {
       getCollatzConjecture(num);
     }
 
-    setSequence(collatzConjectureData);
-
+    //recursion function for getting the Collatz Conjecture Data Set
     function getCollatzConjecture(num) {
+      //adding to array the value each iteration
       collatzConjectureData = collatzConjectureData.concat(num);
 
       if (num === 0) return 0;
@@ -45,6 +46,10 @@ const App = () => {
       else if (num % 2 === 0) return getCollatzConjecture(num / 2);
       else return getCollatzConjecture(num * 3 + 1);
     }
+
+    //transfer to sequence
+    setSequence(collatzConjectureData);
+
     // End coding here
   }, [number]);
 
