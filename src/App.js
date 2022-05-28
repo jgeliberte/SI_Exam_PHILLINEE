@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import Highcharts from "highcharts";
@@ -25,6 +24,19 @@ const App = () => {
     // Start coding here
     let collatzConjectureData = [];
 
+    console.log(number);
+    let num = number;
+
+    //check if input is a positive integer
+    let x = parseFloat(num);
+    if (!isNaN(num) && (x | 0) === x && num >= 0) {
+      num = parseInt(num);
+      collatzConjectureData = [];
+      getCollatzConjecture(num);
+    }
+
+    setSequence(collatzConjectureData);
+
     function getCollatzConjecture(num) {
       collatzConjectureData = collatzConjectureData.concat(num);
 
@@ -33,22 +45,6 @@ const App = () => {
       else if (num % 2 === 0) return getCollatzConjecture(num / 2);
       else return getCollatzConjecture(num * 3 + 1);
     }
-
-    return () => {
-      console.log(number);
-      let num = number;
-
-      //check if input is a positive integer
-      let x = parseFloat(num);
-      if (!isNaN(num) && (x | 0) === x && num >= 0) {
-        num = parseInt(num);
-        collatzConjectureData = [];
-        getCollatzConjecture(num);
-      }
-
-      setSequence(collatzConjectureData);
-    };
-
     // End coding here
   }, [number]);
 
